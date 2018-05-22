@@ -9,19 +9,26 @@
 </template>
 
 <script>
+import { shuffling } from "@/API/api";
 export default {
   data() {
     return {
-      images:[
-          {url:"../../../static/img/shuffling01.png"},
-          {url:"../../../static/img/shuffling02.png"},
-          {url:"../../../static/img/shuffling03.png"},
-          {url:"../../../static/img/shuffling04.png"}
-      ]
+      images: []
     };
   },
-  mounted(){
-
+  mounted() {
+    this.shuffling();
+  },
+  methods: {
+    async shuffling() {
+      let param = {};
+      const response = await shuffling(param);
+      if (response.data.code == 200) {
+        this.images = response.data.imgurl;
+      } else {
+        console.log("fail");
+      }
+    }
   }
 };
 </script>
@@ -29,6 +36,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .lunbo .img {
-    height: 8rem;
+  height: pxToRem(200);
 }
 </style>

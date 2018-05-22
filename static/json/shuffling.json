@@ -1,0 +1,16 @@
+{
+   "imgurl": [{
+         "url": "../../../static/img/shuffling01.png"
+      },
+      {
+         "url": "../../../static/img/shuffling02.png"
+      },
+      {
+         "url": "../../../static/img/shuffling03.png"
+      },
+      {
+         "url": "../../../static/img/shuffling04.png"
+      }
+   ],
+   "code":200
+}

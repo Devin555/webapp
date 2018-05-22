@@ -1,6 +1,6 @@
 import {fetch} from "./fetch.js";
 
-//根据id查商品详情
+//登陆
 function checkUser(param) {
     return fetch({
         url:'../static/json/login.json',
@@ -9,5 +9,15 @@ function checkUser(param) {
     })
 }
 
+//首页的轮播图片
+function shuffling(param) {
+    return fetch({
+        url:'../static/json/shuffling.json',
+        method: 'get',
+        params: param
+    })
+}
 
-export {checkUser}
+
+
+export {checkUser,shuffling}
