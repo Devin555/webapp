@@ -1,0 +1,352 @@
+// @import 'retina';
+html,
+body,
+ul,
+li,
+ol,
+dl,
+dd,
+dt,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+fieldset,
+legend,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+img {
+  display: block;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+input {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+select,
+input {
+  vertical-align: middle;
+}
+
+select,
+input,
+textarea {
+  font-size: 12px;
+  margin: 0;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  outline-style: none;
+  -webkit-appearance: none;
+}
+
+textarea {
+  resize: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "PingFang-SC-Medium";
+}
+
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 75% !important;
+  }
+}
+
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 84.375% !important;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 87.89062% !important;
+  }
+}
+
+@media only screen and (min-width: 410px) {
+  html {
+    font-size: 97.03% !important;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 112.5% !important;
+  }
+}
+
+@media only screen and (min-width: 560px) {
+  html {
+    font-size: 131.25% !important;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  html {
+    font-size: 150% !important;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  html {
+    font-size: 168.75% !important;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  html {
+    font-size: 175.78125% !important;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  html {
+    font-size: 187.5% !important;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  html {
+    font-size: 100% !important;
+  }
+}
+@function pxToRem($px, $base: 28.125) {
+  @return ($px / $base) * 1rem;
+}
+$uired:#e51f13;
+$color:#cccccc;
+$border:#e5e5e5;
+$oldtip:#999999;
+$words:#000000;
+$an:#ef8337;
+$head:32;
+$p:26;
+$span:26;
+$tips:24;
+$bg:#F2F2F2;
+$bg1:#FFFFFF;
+$rd:#232326;
+$yh: "PingFang-SC-Medium";
+@mixin size($width,$height){
+  width: $width;
+  height: $height;
+}
+@mixin transform($bc) {
+  transform: $bc;
+  -webkit-transform: $bc;
+}
+
+@mixin _flex($direction:column) {
+  display: flex;
+  display: -webkit-flex;
+   display: -moz-flex;
+   display: -ms-flex;
+   display: -o-flex;
+  flex-direction: $direction;
+}
+
+@mixin _box($direction:vertical) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -o-box;
+  display: box;
+  -webkit-box-orient: $direction;
+  -moz-box-orient: $direction;
+
+  -o-box-orient: $direction;
+  box-orient: $direction;
+}
+@mixin _box_ms($direction:column){
+  -ms-flex-direction: $direction;
+}
+
+
+@mixin box-flex($flex:1) {
+  -webkit-box-flex: $flex;
+  -moz-box-flex: $flex;
+  -ms-flex: $flex;
+  -o-box-flex: $flex;
+  box-flex: $flex;
+  flex:$flex ;
+}
+
+@mixin _flexC() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -o-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+
+@mixin _flexR() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -o-box;
+  display: box;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+}
+@mixin _grow($num:1) {
+  flex: $num;
+}
+
+@mixin box_sizing() {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+@mixin nobar($target) {
+  #{$target}::-webkit-scrollbar {
+    width: 0;
+    height: 0
+  }
+}
+
+@mixin border_none($position) {
+  @each $p in $position {
+    border-#{$p}: 0;
+  }
+}
+
+@mixin padding_none($position) {
+  @each $p in $position {
+    padding-#{$p}: 0;
+  }
+}
+
+%lineto {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2e2e2e), color-stop(1, #0a0a0a));
+}
+%lineto2 {
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #525252), color-stop(1, #0a0a0a));
+}
+
+%reposition {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+%flexmid {
+  align-items: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+}
+%boxmid{
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -o-box-pack: center;
+  // box-pack: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -o-box-align: center;
+  // box-align: center;
+  align-items: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+}
+
+%mid {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.van-tabbar-item--active,
+.van-picker__cancel,
+.van-picker__confirm,
+.van-tab--active,
+.van-submit-bar__price-interger,
+.van-submit-bar__price-decimal {
+
+
+
+
+
+  color: $uired;
+}
+.van-nav-bar .van-icon{
+  color: #000000;
+  font-size: pxToRem(32);
+  font-weight: bold;
+}
+.van-button--danger,
+.van-switch--on ,
+.van-button--primary {
+
+
+  background-color: $uired;
+  border-color: $uired;
+}
+.van-nav-bar__title{
+    font-size: pxToRem(40);
+    font-family: PingFang-SC-Bold;
+    color: #000000;
+}
+.van-checkbox--checked {
+  color: #fff;
+  border-color: $uired;
+  background-color: $uired;
+}
+.van-nav-bar__left,
+.van-nav-bar__right
+{
+  font-size: pxToRem(32);
+}
