@@ -1,0 +1,23 @@
+{
+   "data":[
+      {
+         "imgurl": "../../../static/img/shuffling01.png",
+         "title": "武汉欢乐谷",
+         "price": 90,
+         "juli": 1000
+      },
+      {
+         "imgurl": "../../../static/img/shuffling02.png",
+         "title": "东湖生态旅游风景区",
+         "price": 390,
+         "juli": 1250
+      },
+      {
+         "imgurl": "../../../static/img/shuffling03.png",
+         "title": "晴川阁",
+         "price": 43,
+         "juli": 2000
+      }
+   ],
+   "code":200
+}

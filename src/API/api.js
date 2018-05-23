@@ -9,7 +9,7 @@ function checkUser(param) {
     })
 }
 
-//首页的轮播图片
+//首页-轮播图片
 function shuffling(param) {
     return fetch({
         url:'../static/json/shuffling.json',
@@ -18,6 +18,31 @@ function shuffling(param) {
     })
 }
 
+//首页-栏目
+function lanmu(param) {
+    return fetch({
+        url:'../static/json/Lanmu.json',
+        method: 'get',
+        params: param
+    })
+}
+
+//首页-广告
+function ad(param) {
+    return fetch({
+        url:'../static/json/ad.json',
+        method: 'get',
+        params: param
+    })
+}
+//首页-猜你喜欢
+function shop(param) {
+    return fetch({
+        url:'http://localhost:8080/api/shop',
+        method: 'get',
+        params: param
+    })
+}
 
 
-export {checkUser,shuffling}
+export {checkUser,shuffling,lanmu,ad,shop}

@@ -16,43 +16,48 @@
 </template>
 
 <script>
+import { lanmu } from "@/API/api";
 export default {
   data() {
     return {
-      images: [
-        { title: "美食", url: "../../../static/img/meishi.png" },
-        { title: "电影", url: "../../../static/img/dianying.png" },
-        { title: "酒店", url: "../../../static/img/jiudian.png" },
-        { title: "KTV", url: "../../../static/img/ktv.png" }
-      ],
-      images01: [
-        { title: "今日新单", url: "../../../static/img/xindan.png" },
-        { title: "代金卷", url: "../../../static/img/daijinjuan.png" },
-        { title: "周边游", url: "../../../static/img/zhoubianyou.png" },
-        { title: "外卖", url: "../../../static/img/waimai.png" }
-      ]
+      images: [],
+      images01: []
     };
+  },
+  mounted() {
+    this.lanmu();
+  },
+  methods: {
+    async lanmu() {
+      let param = {};
+      const response = await lanmu(param);
+      if (response.data.code == 200) {
+        this.images = response.data.data.images;
+        this.images01 = response.data.data.images01;
+      } else {
+        console.log("fail");
+      }
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
 .lanmu {
   background: #ffffff;
 }
 .fenleiout {
-  width: 4rem;
+  width: pxToRem(112);
 }
-.lanmu .fenlei,
-.fenlei01 {
+.lanmu .fenlei {
   display: flex;
   justify-content: space-between;
-  padding: 0.6rem 2rem;
+  padding: pxToRem(17) pxToRem(56);
 }
 .fenleiimg {
-  width: 3rem;
-  height: 3rem;
+  width: pxToRem(84);
+  height: pxToRem(84);
   margin: 0 auto;
 }
 img {
@@ -60,9 +65,9 @@ img {
   height: 100%;
 }
 .fenleiTitle {
-  height: 2.5rem;
-  line-height: 2.5rem;
+  height: pxToRem(70);
+  line-height: pxToRem(70);
   text-align: center;
-  font-size: 0.8rem;
+  font-size: pxToRem(22);
 }
 </style>

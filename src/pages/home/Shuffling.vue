@@ -36,6 +36,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .lunbo .img {
-  height: pxToRem(200);
+  height: pxToRem(230);
 }
 </style>

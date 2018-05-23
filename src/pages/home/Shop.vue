@@ -2,69 +2,61 @@
   <div class="shops">
       <div class="shopsTitle">猜你喜欢</div>
       <div class="shopsContent">
-        <div class="kuai">
-          <div class="img"><img src="../../../static/img/taocan.png" alt=""></div>
-          <div class="imgcontent">
-            <div class="title">至尊披萨</div>
-            <div class="imgtxt">小众推荐过几款取色软件ColorSPY和千宇,这次这个ColorPix呢,功能要比前两个强,而且用户体验更好,比如选定区域按</div>
-            <div class="imgprice">
-              <span class="prileft">￥59元</span>
-              <span class="priright">已售：4000</span>
+        <van-list v-model="loading" :finished="finished" @load="onLoad">
+          <div class="kuai" v-for="(item,index) in list" :key="index">
+            <div class="img"><img :src="item.img" alt=""></div>
+            <div class="imgcontent">
+              <div class="title">{{item.title}}</div>
+              <div class="imgtxt">{{item.imgtxt}}</div>
+              <div class="imgprice">
+                <span class="prileft">￥{{item.price}}元</span>
+                <span class="priright">已售：{{item.sell}}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="kuai">
-          <div class="img"><img src="../../../static/img/taocan.png" alt=""></div>
-          <div class="imgcontent">
-            <div class="title">至尊披萨</div>
-            <div class="imgtxt">小众推荐过几款取色软件ColorSPY和千宇,这次这个ColorPix呢,功能要比前两个强,而且用户体验更好,比如选定区域按</div>
-            <div class="imgprice">
-              <span class="prileft">￥59元</span>
-              <span class="priright">已售：4000</span>
-            </div>
-          </div>
-        </div>
-        <div class="kuai">
-          <div class="img"><img src="../../../static/img/taocan.png" alt=""></div>
-          <div class="imgcontent">
-            <div class="title">至尊披萨</div>
-            <div class="imgtxt">小众推荐过几款取色软件ColorSPY和千宇,这次这个ColorPix呢,功能要比前两个强,而且用户体验更好,比如选定区域按</div>
-            <div class="imgprice">
-              <span class="prileft">￥59元</span>
-              <span class="priright">已售：4000</span>
-            </div>
-          </div>
-        </div>
-        <div class="kuai">
-          <div class="img"><img src="../../../static/img/taocan.png" alt=""></div>
-          <div class="imgcontent">
-            <div class="title">至尊披萨</div>
-            <div class="imgtxt">小众推荐过几款取色软件ColorSPY和千宇,这次这个ColorPix呢,功能要比前两个强,而且用户体验更好,比如选定区域按</div>
-            <div class="imgprice">
-              <span class="prileft">￥59元</span>
-              <span class="priright">已售：4000</span>
-            </div>
-          </div>
-        </div>
-        <div class="kuai">
-          <div class="img"><img src="../../../static/img/taocan.png" alt=""></div>
-          <div class="imgcontent">
-            <div class="title">至尊披萨</div>
-            <div class="imgtxt">小众推荐过几款取色软件ColorSPY和千宇,这次这个ColorPix呢,功能要比前两个强,而且用户体验更好,比如选定区域按</div>
-            <div class="imgprice">
-              <span class="prileft">￥59元</span>
-              <span class="priright">已售：4000</span>
-            </div>
-          </div>
-        </div>
+        </van-list>
       </div>
   </div>
 </template>
 
 <script>
+import { shop } from "@/API/api";
 export default {
   data() {
-    return {};
+    return {
+      list: [],
+      loading: false,
+      finished: false
+    };
+  },
+  mounted() {
+    this.getdata();
+  },
+  methods: {
+    async getdata() {
+      let param = {};
+      const response = await shop(param);
+      if (response.data.code == 200) {
+        this.list = response.data.data;
+      } else {
+        console.log("fail");
+      }
+    },
+    onLoad() {
+      console.log(12)
+      this.loading = true;
+      setTimeout(() => {
+        for (let i = 0; i < 8; i++) {
+          this.list.push(this.list.length + 1);
+        }
+        this.loading = false;
+
+        if (this.list.length >= 32) {
+
+          this.finished = true;
+        }
+      }, 500);
+    }
   }
 };
 </script>
@@ -128,5 +120,4 @@ export default {
     }
   }
 }
-
 </style>

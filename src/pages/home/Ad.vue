@@ -15,15 +15,26 @@
 </template>
 
 <script>
+import { ad } from "@/API/api";
 export default {
   data() {
     return {
-      data: [
-        { imgurl: "../../../static/img/shuffling01.png", title: "武汉欢乐谷", price: 90, juli: 1000 },
-        { imgurl: "../../../static/img/shuffling02.png", title: "东湖生态旅游风景区", price: 390, juli: 1250 },
-        { imgurl: "../../../static/img/shuffling03.png", title: "晴川阁", price: 43, juli: 2000 }
-      ]
+      data: []
     };
+  },
+  mounted() {
+    this.ad();
+  },
+  methods: {
+    async ad() {
+      let param = {};
+      const response = await ad(param);
+      if (response.data.code == 200) {
+        this.data = response.data.data;
+      } else {
+        console.log("fail");
+      }
+    }
   }
 };
 </script>
@@ -31,57 +42,58 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .ads {
-  margin-top: 0.6rem;
+  margin-top: pxToRem(16);
   background: #ffffff;
-  .adsTitle{
+  .adsTitle {
     display: flex;
     justify-content: space-between;
-    padding: 0.4rem 0.6rem;
-    .biwan{
-      height: 1.6rem;
-      line-height: 1.6rem;
+    padding: pxToRem(12) pxToRem(17);
+    .biwan {
+      height: pxToRem(45);
+      line-height: pxToRem(45);
       background: #66ccff;
-      font-size: 0.8rem;
-      width: 7rem;
+      font-size: pxToRem(22);
+      width: pxToRem(180);
       text-align: center;
-      border-radius: 3px;
+      border-radius: pxToRem(20);
       color: #ffffff;
     }
-    .more{
-      height: 1.6rem;
-      line-height: 1.6rem;
+    .more {
+      height: pxToRem(45);
+      line-height: pxToRem(45);
       color: #999;
-      font-size: 0.5rem;
+      font-size: pxToRem(22);
     }
   }
   .adsMain {
     display: flex;
     justify-content: space-between;
-    padding: 0 0.6rem;
+    padding: 0 pxToRem(17);
     .img {
-      width: 8rem;
-      height: 5rem;
+      width: pxToRem(224);
+      height: pxToRem(140);
       img {
         width: 100%;
         height: 100%;
       }
     }
     .title {
-      width: 8rem;
-      font-size: 1rem;
+      width: pxToRem(224);
+      font-size: pxToRem(25);
+      padding: pxToRem(8) 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .content {
-      width: 8rem;
-      font-size: 0.4rem;
+      width: pxToRem(224);
+      font-size: pxToRem(10);
       color: #666;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       span {
-        font-size: 0.8rem;
+        font-size: pxToRem(8);
         color: #be9e4d;
       }
     }

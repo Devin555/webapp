@@ -13,6 +13,18 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+
+// -------------------------------mine 01
+//首先
+const express = require('express')
+const app = express()
+var appData = require('../static/json/shop.json')//加载本地数据文件
+var shop = appData.shop//获取对应的本地数据
+var apiRoutes = express.Router()
+app.use('/api', apiRoutes)
+// -------------------------------mine 01
+
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -42,7 +54,33 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+// -------------------------------mine 02
+
+    before(app) {
+      app.get('/api/shop', (req, res) => {
+        res.json({
+          errno: 0,
+          code:200,
+          data: shop
+        })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+      })
+      // app.get('/api/goods', (req, res) => {
+      //   res.json({
+      //     errno: 0,
+      //     data: goods
+      //   })
+      // }),
+      // app.get('/api/ratings', (req, res) => {
+      //   res.json({
+      //     errno: 0,
+      //     data: ratings
+      //   })
+      // })
     }
+// -------------------------------mine 02
+
+
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -67,6 +105,35 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     ])
   ]
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || config.dev.port
