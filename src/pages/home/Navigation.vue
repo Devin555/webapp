@@ -2,7 +2,7 @@
     <div class="navigation">
       <van-row>
         <van-col span="3">武汉</van-col>
-        <van-col span="18"><van-search @keydown="show($event)" background="#33cccc" placeholder="请输入商品名称" v-model="value" /></van-col>
+        <van-col span="18"><van-search @keydown="show($event)" @click="tosearch" background="#33cccc" placeholder="华莱士炸鸡汉堡" v-model="value" /></van-col>
         <van-col span="3"><van-icon name="location" /></van-col>
       </van-row>
     </div>
@@ -17,6 +17,11 @@ export default {
     };
   },
   methods:{
+    tosearch(){
+      this.$router.push({
+        path:'homesearch'
+      })
+    },
     show: ev => {
       if (ev.keyCode == 13) {
         Toast("搜索中。。。。");

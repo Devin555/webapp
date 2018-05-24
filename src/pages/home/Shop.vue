@@ -3,7 +3,7 @@
       <div class="shopsTitle">猜你喜欢</div>
       <div class="shopsContent">
         <van-list v-model="loading" :finished="finished" @load="onLoad">
-          <div class="kuai" v-for="(item,index) in list" :key="index">
+          <div class="kuai" v-for="(item,index) in list" :key="index" @click="toshopfood(item.id)">
             <div class="img"><img :src="item.img" alt=""></div>
             <div class="imgcontent">
               <div class="title">{{item.title}}</div>
@@ -27,29 +27,41 @@ export default {
       list: [],
       loading: false,
       finished: false,
-      page:0
+      page: 0,
+      allData:[]
     };
   },
   mounted() {
-    
+    this.getdata();
   },
   methods: {
     async getdata() {
-      let param = {page:1};
+      let param = { page: 1 };
       const response = await shop(param);
       if (response.data.code == 200) {
-        this.list = response.data.data;       
+        this.allData = response.data.data;
+        this.list = this.allData.slice(0,5);
         this.loading = false;
       } else {
         console.log("fail");
       }
     },
     onLoad() {
-      this.loading = true;
       setTimeout(() => {
-        this.page++;
-        this.getdata();
+        for (let i = 0; i < 5; i++) {
+          this.list.push(this.allData[i+6]);
+        }
+        this.loading = false;
+        if (this.list.length >= this.allData.length) {
+          this.finished = true;
+        }
       }, 1000);
+    },
+    toshopfood(id){
+      this.$router.push({
+        path:'shopfood',
+        query:{id:id}
+      })
     }
   }
 };
