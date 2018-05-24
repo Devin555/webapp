@@ -9,6 +9,24 @@ function checkUser(param) {
     })
 }
 
+//首页-猜你喜欢
+function shop(param) {
+    return fetch({
+        url:'/api/shop',
+        method: 'get',
+        params: param
+    })
+}
+
+//附近-享美食
+function goodfood(param) {
+    return fetch({
+        url:'/api/goodfood',
+        method: 'get',
+        params: param
+    })
+}
+
 //首页-轮播图片
 function shuffling(param) {
     return fetch({
@@ -35,23 +53,7 @@ function ad(param) {
         params: param
     })
 }
-//首页-猜你喜欢
-function shop(param) {
-    return fetch({
-        url:'http://localhost:8080/api/shop',
-        method: 'get',
-        params: param
-    })
-}
 
-//附近-享美食
-function goodfood(param) {
-    return fetch({
-        url:'http://localhost:8080/api/goodfood',
-        method: 'get',
-        params: param
-    })
-}
 
 
 export {checkUser,shuffling,lanmu,ad,shop,goodfood}
