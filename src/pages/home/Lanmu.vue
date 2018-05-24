@@ -65,8 +65,8 @@ img {
   height: 100%;
 }
 .fenleiTitle {
-  height: pxToRem(70);
-  line-height: pxToRem(70);
+  height: pxToRem(50);
+  line-height: pxToRem(50);
   text-align: center;
   font-size: pxToRem(22);
 }

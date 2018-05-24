@@ -27,7 +27,7 @@
                 />
             </van-cell-group>
             <div class="submit">
-                <van-button size="small" type="primary" @click="submitForm">登陆</van-button>
+                <van-button size="small" type="primary" @click="submitForm">登录</van-button>
             </div>
         </div>
     </div>
@@ -60,8 +60,9 @@ export default {
           if (response.data.status == true) {
             console.log("登陆成功");
             this.loginAction();
+            var toUrl = this.$route.query.url;
             this.$router.push({
-              path: "home"
+              path: toUrl
             });
           }
         } else {
@@ -72,7 +73,7 @@ export default {
       }
     },
     onClickLeft(){
-        this.$router.go(-1)
+        this.$router.back()
     }
   }
 };

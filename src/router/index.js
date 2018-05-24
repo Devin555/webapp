@@ -4,14 +4,11 @@ import Router from 'vue-router'
 
 import Main from '@/pages/Main'
 import Home from '@/pages/home/Home'
-import Guang from '@/pages/Guang'
+import Guang from '@/pages/guang/Guang'
 import Mine from '@/pages/Mine'
-import Order from '@/pages/Order'
-import Recent from '@/pages/Recent'
+import Order from '@/pages/order/Order'
+import Recent from '@/pages/recent/Recent'
 import Signin from '@/pages/Signin'
-
-
-import Meishi from '@/pages/meishi/Meishi'
 
 Vue.use(Router)
 
@@ -60,11 +57,6 @@ export default new Router({
             path: '/signin',
             name: 'signin',
             component: Signin
-      },
-      {
-         path: '/meishi',
-         name: 'meishi',
-         component: Meishi
       }
    ]
 })

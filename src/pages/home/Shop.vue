@@ -26,36 +26,30 @@ export default {
     return {
       list: [],
       loading: false,
-      finished: false
+      finished: false,
+      page:0
     };
   },
   mounted() {
-    this.getdata();
+    
   },
   methods: {
     async getdata() {
-      let param = {};
+      let param = {page:1};
       const response = await shop(param);
       if (response.data.code == 200) {
-        this.list = response.data.data;
+        this.list = response.data.data;       
+        this.loading = false;
       } else {
         console.log("fail");
       }
     },
     onLoad() {
-      console.log(12)
       this.loading = true;
       setTimeout(() => {
-        for (let i = 0; i < 8; i++) {
-          this.list.push(this.list.length + 1);
-        }
-        this.loading = false;
-
-        if (this.list.length >= 32) {
-
-          this.finished = true;
-        }
-      }, 500);
+        this.page++;
+        this.getdata();
+      }, 1000);
     }
   }
 };

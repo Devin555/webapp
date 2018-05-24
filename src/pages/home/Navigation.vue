@@ -2,18 +2,26 @@
     <div class="navigation">
       <van-row>
         <van-col span="3">武汉</van-col>
-        <van-col span="18"><van-search background="#33cccc" placeholder="请输入商品名称" v-model="value" /></van-col>
+        <van-col span="18"><van-search @keydown="show($event)" background="#33cccc" placeholder="请输入商品名称" v-model="value" /></van-col>
         <van-col span="3"><van-icon name="location" /></van-col>
       </van-row>
     </div>
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
   data() {
     return {
       value: ""
     };
+  },
+  methods:{
+    show: ev => {
+      if (ev.keyCode == 13) {
+        Toast("搜索中。。。。");
+      }
+    }
   }
 };
 </script>

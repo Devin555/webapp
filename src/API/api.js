@@ -44,5 +44,14 @@ function shop(param) {
     })
 }
 
+//附近-享美食
+function goodfood(param) {
+    return fetch({
+        url:'http://localhost:8080/api/goodfood',
+        method: 'get',
+        params: param
+    })
+}
 
-export {checkUser,shuffling,lanmu,ad,shop}
+
+export {checkUser,shuffling,lanmu,ad,shop,goodfood}

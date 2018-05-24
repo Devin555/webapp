@@ -20,6 +20,7 @@ const express = require('express')
 const app = express()
 var appData = require('../static/json/shop.json')//加载本地数据文件
 var shop = appData.shop//获取对应的本地数据
+var goodfood = appData.goodfood//获取对应的本地数据
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 // -------------------------------mine 01
@@ -64,19 +65,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           code:200,
           data: shop
         })//接口返回json数据，上面配置的数据seller就赋值给data请求后调用
+      }),
+      app.get('/api/goodfood', (req, res) => {
+        res.json({
+          errno: 0,
+          code:200,
+          data: goodfood
+        })
       })
-      // app.get('/api/goods', (req, res) => {
-      //   res.json({
-      //     errno: 0,
-      //     data: goods
-      //   })
-      // }),
-      // app.get('/api/ratings', (req, res) => {
-      //   res.json({
-      //     errno: 0,
-      //     data: ratings
-      //   })
-      // })
+     
     }
 // -------------------------------mine 02
 

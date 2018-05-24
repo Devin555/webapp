@@ -22,7 +22,10 @@ router.beforeEach((to, from, next) => {
   let isLogin = store.state.isLogin
    if (nextRoute.indexOf(to.name) >= 0) {
       if(!isLogin){
-        router.push({path:'signin'})
+        router.push({
+          path:'signin',
+          query: {url: to.name}
+        })
       }else{
         next()
       }
